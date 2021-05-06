@@ -13,6 +13,7 @@ const createWindow = (): void => {
       nodeIntegration: false,
       nodeIntegrationInWorker: false,
       contextIsolation: true,
+      preload: path.join(__dirname, './core/preLoad.js'),
     },
   });
 
