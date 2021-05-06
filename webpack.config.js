@@ -20,8 +20,7 @@ module.exports = {
   },
   // ファイルタイプ毎の処理を記述する
   module: {
-    rules: [
-      {
+    rules: [{
         // コンパイルの事前に eslint による
         // 拡張子 .ts または .tsx の場合
         test: /\.tsx?$/,
@@ -37,6 +36,14 @@ module.exports = {
         // ローダーの指定
         // TypeScript をコンパイルする
         use: 'ts-loader',
+      },
+      {
+        test: /\.css$/,
+        use: [{
+          loader: 'style-loader'
+        }, {
+          loader: 'css-loader'
+        }],
       },
     ],
   },
