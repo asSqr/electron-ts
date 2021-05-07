@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'; // --(a)
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { addTaskAction } from '../actions/TaskActions';
+import { addTask } from '../actions/TaskActions';
 
 const Container = styled.div`
   align-items: center;
@@ -56,13 +56,14 @@ const AddTask: React.FC = () => {
   // 追加ボタンを押した時のイベント
   const onClickAddButton = useCallback(() => {
     // 追加アクションを dispatch する
-    dispatch(
-      addTaskAction({
+    addTask(
+      {
         complete: false,
         deadline,
         taskName,
         id: '',
-      }),
+      },
+      dispatch,
     );
   }, [deadline, taskName]); // 関数の外の変数を参照しているので、変更を監視する
   return (

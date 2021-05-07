@@ -1,11 +1,12 @@
 import moment from 'moment';
 import React, { useCallback, useMemo, MouseEvent } from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteTaskAction, toggleCompleteAction } from '../actions/TaskActions';
+import { deleteTask, toggleTask } from '../actions/TaskActions';
 import { ITask } from '../states/ITask';
 import { styled } from './FoundationStyles';
 
-const Task = styled.div<{ expiration: boolean }>`
+// prettier-ignore
+const Task = styled.div < { expiration: boolean } > `
   align-items: center;
   background-color: ${(p): string =>
     p.expiration ? 'inherit' : p.theme.SECONDARY_2_0};
@@ -75,12 +76,12 @@ const TaskRow: React.FC<{ data: ITask }> = props => {
   }, [data.deadline]);
   // 行をクリックしたときのイベント
   const onRowClick = useCallback(() => {
-    dispatch(toggleCompleteAction(data.id));
-  }, [data.id]);
+    toggleTask(data, dispatch);
+  }, [data]);
   // 削除ボタンを押した時のイベント
   const onDeleteClick = useCallback(
     (e: MouseEvent<HTMLDivElement>) => {
-      dispatch(deleteTaskAction(data.id));
+      deleteTask(data.id, dispatch);
       // クリックイベントを親要素の伝播させない
       e.stopPropagation();
     },

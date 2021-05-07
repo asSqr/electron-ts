@@ -1,45 +1,87 @@
-import moment from 'moment';
 import { Dispatch } from 'redux';
 import { actionCreatorFactory } from 'typescript-fsa';
 import { ITask } from '../states/ITask';
 
 const actionCreator = actionCreatorFactory('task-actions');
 
-export const showTaskListAction = actionCreator<ITask[]>('show-task-list');
+export const showTaskListAction = actionCreator.async<null, ITask[], string>(
+  'show-task-list',
+);
 
-export const addTaskAction = actionCreator<ITask>('add');
+export const getTaskList = async (dispatch: Dispatch): Promise<void> => {
+  dispatch(showTaskListAction.started(null));
 
-export const toggleCompleteAction = actionCreator<string>('toggle-complete');
+  const taskList = await window.core.loadTaskList().catch(e => {
+    console.error(e);
 
-export const deleteTaskAction = actionCreator<string>('delete');
+    dispatch(
+      showTaskListAction.failed({
+        error: 'ファイルの読み込みに失敗しました．',
+        params: null,
+      }),
+    );
+  });
 
-const dummyTasks: ITask[] = [
-  {
-    complete: false,
-    deadline: moment().add(1, 'day').toDate(),
-    id: '0',
-    taskName: 'task01',
-  },
-  {
-    complete: true,
-    deadline: moment().add(1, 'day').toDate(),
-    id: '1',
-    taskName: 'task02',
-  },
-  {
-    complete: false,
-    deadline: moment().add(-1, 'day').toDate(),
-    id: '2',
-    taskName: 'task03',
-  },
-  {
-    complete: true,
-    deadline: moment().add(-1, 'day').toDate(),
-    id: '3',
-    taskName: 'task04',
-  },
-];
+  if (!taskList) return;
 
-export const getTaskList = (dispatch: Dispatch): void => {
-  dispatch(showTaskListAction(dummyTasks));
+  dispatch(showTaskListAction.done({ result: taskList, params: null }));
+};
+
+export const addTask = async (
+  task: ITask,
+  dispatch: Dispatch,
+): Promise<void> => {
+  dispatch(showTaskListAction.started(null));
+  const taskList = await window.core.saveTask(task).catch(e => {
+    console.error(e);
+    dispatch(
+      showTaskListAction.failed({
+        error: 'ファイルの書き込みに失敗しました。',
+        params: null,
+      }),
+    );
+  });
+  if (!taskList) return;
+  dispatch(showTaskListAction.done({ result: taskList, params: null }));
+};
+
+export const toggleTask = async (
+  task: ITask,
+  dispatch: Dispatch,
+): Promise<void> => {
+  dispatch(showTaskListAction.started(null));
+  task.complete = !task.complete;
+
+  const taskList = await window.core.saveTask(task).catch(e => {
+    console.error(e);
+
+    dispatch(
+      showTaskListAction.failed({
+        error: 'ファイルの書き込みに失敗しました．',
+        params: null,
+      }),
+    );
+  });
+
+  if (!taskList) return;
+
+  dispatch(showTaskListAction.done({ result: taskList, params: null }));
+};
+
+export const deleteTask = async (
+  taskId: string,
+  dispatch: Dispatch,
+): Promise<void> => {
+  dispatch(showTaskListAction.started(null));
+  const taskList = await window.core.deleteTask(taskId).catch(e => {
+    console.error(e);
+    dispatch(
+      showTaskListAction.failed({
+        error: 'ファイルの書き込みに失敗しました。',
+        params: null,
+      }),
+    );
+  });
+  if (!taskList) return;
+  dispatch(showTaskListAction.done({ result: taskList, params: null }));
 };
