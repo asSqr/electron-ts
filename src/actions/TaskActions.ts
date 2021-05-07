@@ -16,7 +16,7 @@ export const getTaskList = async (dispatch: Dispatch): Promise<void> => {
 
     dispatch(
       showTaskListAction.failed({
-        error: 'ファイルの読み込みに失敗しました．',
+        error: 'ファイルの読み込みに失敗しました。',
         params: null,
       }),
     );
@@ -57,7 +57,7 @@ export const toggleTask = async (
 
     dispatch(
       showTaskListAction.failed({
-        error: 'ファイルの書き込みに失敗しました．',
+        error: 'ファイルの書き込みに失敗しました。',
         params: null,
       }),
     );

@@ -8,7 +8,8 @@
     "start": "electron ./dist/main.js",
     "build": "run-s build:main build:render",
     "build:main": "tsc",
-    "build:render": "webpack"
+    "build:render": "webpack",
+    "test": "jest"
   },
   "dependencies": {
     "css-loader": "^5.2.4",
@@ -29,7 +30,10 @@
     "typescript-fsa-reducers": "^1.2.2"
   },
   "devDependencies": {
+    "@types/enzyme": "^3.10.8",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/fs-extra": "^9.0.11",
+    "@types/jest": "^26.0.23",
     "@types/moment": "^2.13.0",
     "@types/react": "^17.0.5",
     "@types/react-datepicker": "^3.1.8",
@@ -40,14 +44,22 @@
     "@types/styled-components": "^5.1.9",
     "@typescript-eslint/eslint-plugin": "^4.22.1",
     "@typescript-eslint/parser": "^4.22.1",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.1",
     "electron": "^12.0.6",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.2",
     "eslint": "^7.25.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.6.3",
+    "jest-styled-components": "^7.0.4",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "ts-jest": "^26.5.6",
     "ts-loader": "^9.1.1",
     "typescript": "^4.2.4",
     "webpack": "^5.36.2",

@@ -1,0 +1,168 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TaskRow complete 1`] = `
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: inherit;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid rgb(200,200,200);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  margin-bottom: 1em;
+  padding: 10px;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -webkit-transition-property: all;
+  transition-property: all;
+}
+
+.c0:hover {
+  -webkit-transform: translate(-5px,-5px);
+  -ms-transform: translate(-5px,-5px);
+  transform: translate(-5px,-5px);
+  box-shadow: 5px 5px 5px rgba(200,200,200,4);
+}
+
+.c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  height: 2em;
+  width: 2em;
+}
+
+.c2 {
+  font-size: 150%;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  height: 3em;
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
+}
+
+.c5 {
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c4 {
+  font-size: 120%;
+}
+
+<TaskRow
+  data={
+    Object {
+      "complete": true,
+      "deadline": 2020-01-01T12:00:00.000Z,
+      "id": "task001",
+      "taskName": "task-name",
+    }
+  }
+>
+  <styled.div
+    expiration={true}
+    onClick={[Function]}
+  >
+    <div
+      className="c0"
+      onClick={[Function]}
+    >
+      <styled.div>
+        <div
+          className="c1"
+        >
+          <styled.p>
+            <p
+              className="c2"
+            >
+              ✔
+            </p>
+          </styled.p>
+        </div>
+      </styled.div>
+      <styled.div>
+        <div
+          className="c3"
+        >
+          <styled.div>
+            <div
+              className="c4"
+            >
+              task-name
+            </div>
+          </styled.div>
+          <styled.div>
+            <div
+              className=""
+            >
+              ⏰
+              2020-01-01 21:00
+            </div>
+          </styled.div>
+        </div>
+      </styled.div>
+      <styled.div
+        className="deleteButton"
+        onClick={[Function]}
+      >
+        <div
+          className="c5 deleteButton"
+          onClick={[Function]}
+        >
+          ❌
+        </div>
+      </styled.div>
+    </div>
+  </styled.div>
+</TaskRow>
+`;
